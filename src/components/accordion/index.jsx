@@ -2,7 +2,7 @@ import { useState } from 'react';
 import data from './data'
 import './styles.css'
 
-export default function Accordian() {
+export default function Accordion() {
 
     const [selected, setSelected] = useState(null);
     const [enableMultiSelect, setEnableMultiSelect] = useState(false);

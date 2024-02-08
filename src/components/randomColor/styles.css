@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    height: 100%;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 30px;
+}
+
+.controls button {
+    padding: 20px 20px;
+    margin: 10px;
+    background: chocolate; 
+    color: white;
+    font-style: bold;
+    font-size: 20px;
+    ;
+}
+
+.mode {
+    font-size: x-large;
+}
+
+
+.color {
+
+}
