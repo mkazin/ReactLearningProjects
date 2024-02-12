@@ -1,0 +1,12 @@
+
+.star {
+    outline-color: darkgrey;
+}
+
+.blank {
+    color: darkgrey;
+}
+
+.full {
+    color: yellow;
+}
