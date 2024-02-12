@@ -4,7 +4,16 @@ Solving the React projects by freeCodeCamps
 * [Video]](https://www.youtube.com/watch?v=5ZdHfJVAY-s)
 * [His solutions](https://github.com/sangammukherjee/25-reactjs-interview-projects/)
 
+To be brutally honest, there is a lot *wrong* with the code offered here and shown
+in the video. As is, this code would not make it through the code review required by
+production code.
+It often does things the hard way, duplicates code, ignores computer science fundamentals,
+or other realities of real-world development. It's perfectly fine for learning to code and
+completing projects quickly, but it encourages bad habits.
 
+I will be documenting some of these inline within `// Notes: ` comments to help junior
+engineers see alternative approaches which hopefully makes their transition from bootcamp
+to a job smoother.
 
 
 
