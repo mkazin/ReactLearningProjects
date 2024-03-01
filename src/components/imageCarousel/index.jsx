@@ -41,8 +41,8 @@ export default function ImageCarousel({url, limit}) {
     
     return <div className="container">
         <BsArrowLeftCircleFill 
-            className={"arrow arrow-left" + (currentSlide === 0 ? " disabled-arrow" : "")}
-            onClick={ () => setCurrentSlide(currentSlide - (currentSlide > 0 ? 1 : 0)) } 
+            className="arrow arrow-left"
+            onClick={ () => setCurrentSlide((currentSlide > 0 ? currentSlide : images.length) - 1) }
             />
         {
 
@@ -61,8 +61,9 @@ export default function ImageCarousel({url, limit}) {
             : null
         }
         <BsArrowRightCircleFill 
-            className={"arrow arrow-right" + (currentSlide >= images.length - 1 ? " disabled-arrow" : "")}
-            onClick={ () => setCurrentSlide(currentSlide + (currentSlide >= images.length - 1 ? 0 : 1)) } 
+            className="arrow arrow-right"
+            onClick={ () => setCurrentSlide(currentSlide >= images.length - 1 ? 0 : currentSlide + 1) }
+
             />
 
         <span className="circle-indicators">
