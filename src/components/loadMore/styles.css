@@ -1,0 +1,26 @@
+.productList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+.product {
+    padding-top: 5px;
+    background-color: lightgray;
+    border-color: black;
+    height: 29vh;
+    border-radius: 5%;
+    
+}
+.product img {
+    height: 20vh;
+    width: 95%;
+}
+button.loadMore {
+    height: 5vh;
+    border-radius: 10% 10%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
