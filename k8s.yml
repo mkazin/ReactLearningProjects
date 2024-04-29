@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-learning-projects
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-learning-projects
+  template:
+    metadata:
+      labels:
+        app: react-learning-projects
+    spec:
+      containers:
+      - name: react-learning-projects
+        image: mkazin/react-learning-projects:latest
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-learning-projects
+spec:
+  selector:
+    app: react-learning-projects
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

@@ -34,4 +34,29 @@ jobs:
         with:
           context: .
           push: true
-          tags: mkazin/react-learning-projects:latest
+          tags: mkazin/react-learning-projects:${{ github.sha }}
+
+      - name: Install the Linode CLI
+        uses: linode/action-linode-cli@v1
+        with:
+          token: ${{ secrets.LINODE_TOKEN }}
+
+      # The Linode cluster ID is part of the URL when viewing the cluster in the Linode Cloud Manager.
+      # Alternatively it's the numeric component of the cluster name shown by `kubectl config get-clusters`,
+      # which is also specified in the kubeconfig file.
+      -
+        name: Generate kubeconfig to enable kubectl use
+        run: |
+          linode-cli lke kubeconfig-view ${{ secrets.LINODE_CLUSTER_ID }} > ./kubeconfig
+        env:
+          KUBECONFIG: ./kubeconfig
+
+      -
+        name: Update policy file with SHA as image tag
+        run: |
+          sed -i "s|mkazin/react-learning-projects:latest|mkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
+
+      -
+        name: Deploy the new image
+        run: |
+          kubectl apply -f k8s.yaml
