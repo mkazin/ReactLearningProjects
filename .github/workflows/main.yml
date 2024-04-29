@@ -57,3 +57,5 @@ jobs:
         name: Deploy the new image
         run: |
           kubectl apply --validate=false -f k8s.yaml
+        env:
+          KUBECONFIG: ./kubeconfig
