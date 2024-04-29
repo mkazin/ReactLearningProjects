@@ -44,7 +44,7 @@ jobs:
       -
         name: Generate kubeconfig to enable kubectl use
         run: |
-          linode-cli --token ${{ secrets.LINODE_TOKEN }} lke kubeconfig-view ${{ secrets.LINODE_CLUSTER_ID }} > $KUBECONFIG
+          linode-cli --json lke kubeconfig-view ${{ secrets.LINODE_CLUSTER_ID }} > $KUBECONFIG
         env:
           KUBECONFIG: ./kubeconfig
 
