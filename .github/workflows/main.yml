@@ -17,9 +17,6 @@ jobs:
           node-version: '20.x'
       - run: npm ci
       - run: npm run build --if-present
-      - run: pwd
-      - run: ls -laF
-      - run: ls -laF build/
       - run: npm test
       -
         name: Login to Docker Hub
@@ -34,7 +31,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: mkazin/react-learning-projects:${{ github.sha }}
+          tags: mjkazin/react-learning-projects:${{ github.sha }}
 
       - name: Install the Linode CLI
         uses: linode/action-linode-cli@v1
@@ -54,7 +51,7 @@ jobs:
       -
         name: Update policy file with SHA as image tag
         run: |
-          sed -i "s|mkazin/react-learning-projects:latest|mkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
+          sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
 
       -
         name: Deploy the new image

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-learning-projects
-        image: mkazin/react-learning-projects:latest
+        image: mjkazin/react-learning-projects:latest
         ports:
         - containerPort: 3000
 
