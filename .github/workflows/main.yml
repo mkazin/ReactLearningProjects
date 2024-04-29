@@ -56,4 +56,4 @@ jobs:
       -
         name: Deploy the new image
         run: |
-          kubectl apply -f k8s.yaml
+          kubectl apply --validate='warn' -f k8s.yaml
