@@ -1,8 +1,6 @@
-# Based on "The smallest Docker image to serve static websites" by Florin Lipan
-# https://lipanski.com/posts/smallest-docker-image-static-website
-FROM lipanski/docker-static-website:latest
+FROM busybox:latest
 
 COPY build .
 
-CMD ["busybox", "httpd", "-f", "-v", "-p", "9000"]
-EXPOSE 9000
+CMD ["httpd", "-f", "-v", "-p", "3000"]
+EXPOSE 3000
