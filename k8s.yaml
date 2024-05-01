@@ -17,6 +17,9 @@ spec:
         image: mjkazin/react-learning-projects:latest
         ports:
         - containerPort: 3000
+        env:
+        - name: REACT_APP_LOGROCKET_ID
+          value: ${{ secrets.REACT_APP_LOGROCKET_ID }}
 
 ---
 apiVersion: v1

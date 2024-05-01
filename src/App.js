@@ -7,9 +7,12 @@ import StarRating from './components/starRating';
 
 // import TreeView from './components/treeView';
 // import menus from './components/treeView/data.js';
+import LogRocket from 'logrocket';
 
 function App() {
   // console.log(menus)
+
+  LogRocket.init('df6als/logrockettest');
 
   return (
     <div className="App">

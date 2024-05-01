@@ -59,3 +59,5 @@ jobs:
           kubectl apply --validate=false -f k8s.yaml
         env:
           KUBECONFIG: ./kubeconfig
+          REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}
+

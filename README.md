@@ -15,6 +15,11 @@ I will be documenting some of these inline within `// Notes: ` comments to help 
 engineers see alternative approaches which hopefully makes their transition from bootcamp
 to a job smoother.
 
+I've also created a full CI/CD pipeline which deploys this code to a Kubernetes cluster when the main branch gets an update. Links to relevant resources:
+- Docker Image Repo: https://hub.docker.com/r/mjkazin/react-learning-projects
+
+
+
 
 
 # Getting Started with Create React App
