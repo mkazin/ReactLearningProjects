@@ -7,12 +7,22 @@ import StarRating from './components/starRating';
 
 // import TreeView from './components/treeView';
 // import menus from './components/treeView/data.js';
-import LogRocket from 'logrocket';
 
+
+import LogRocket from 'logrocket';
+// React-specific libraries for LogRocket allowing filtering on component rather than page
+// see https://docs.logrocket.com/reference/react-plugin-1
+// Requires pacakages:
+// * logrocket-react
+// * @babel/plugin-transform-react-display-name
+import setupLogRocketReact from 'logrocket-react';
+
+// after calling LogRocket.init()
 function App() {
   // console.log(menus)
 
-  LogRocket.init('df6als/logrockettest');
+  LogRocket.init(process.env.REACT_APP_LOGROCKET_ID);
+  setupLogRocketReact(LogRocket);
 
   return (
     <div className="App">
