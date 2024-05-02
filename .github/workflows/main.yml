@@ -54,10 +54,14 @@ jobs:
           sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
 
       -
+        name: Create k8s secret for LOGROCKET AppId
+        run: |
+          kubectl create secret generic logrocket-id --from-literal=REACT_APP_LOGROCKET_ID=${{ secrets.REACT_APP_LOGROCKET_ID }}
+
+      -
         name: Deploy the new image
         run: |
           kubectl apply --validate=false -f k8s.yaml
         env:
           KUBECONFIG: ./kubeconfig
-          REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}
 
