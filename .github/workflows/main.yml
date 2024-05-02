@@ -57,6 +57,8 @@ jobs:
         name: Create k8s secret for LOGROCKET AppId
         run: |
           kubectl create secret generic logrocket-id --from-literal=REACT_APP_LOGROCKET_ID=${{ secrets.REACT_APP_LOGROCKET_ID }}
+        env:
+          KUBECONFIG: ./kubeconfig
 
       -
         name: Deploy the new image
