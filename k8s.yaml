@@ -18,6 +18,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
+        - name: NODE_ENV
+          value: "production"
         - name: REACT_APP_LOGROCKET_ID
           valueFrom:
             secretKeyRef:
