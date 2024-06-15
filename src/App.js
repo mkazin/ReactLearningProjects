@@ -35,9 +35,11 @@ function App() {
       <h1>I learn react</h1>
       { /* DON'T COMMENT OUT THIS HEADER - it's used in the App.test.js */}
       <table>
-        <th><td>Variable</td><td>Value</td></th>
-        <tr><td>NODE_ENV:</td><td>{process.env.NODE_ENV}</td></tr>
-        <tr><td>REACT_APP_LOGROCKET_ID</td><td>{process.env.REACT_APP_LOGROCKET_ID}</td></tr>
+        <thead><tr><th colSpan="2">Environment Variables</th></tr></thead>
+        <tbody>
+          <tr><td>NODE_ENV:</td><td>{process.env.NODE_ENV}</td></tr>
+          <tr><td>REACT_APP_LOGROCKET_ID</td><td>{process.env.REACT_APP_LOGROCKET_ID}</td></tr>
+        </tbody>
       </table>
 
 

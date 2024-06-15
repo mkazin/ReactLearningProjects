@@ -39,3 +39,11 @@ spec:
       port: 80
       targetPort: 3000
   type: LoadBalancer
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: logrocket-id
+type: Opaque
+data:
+  REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}
