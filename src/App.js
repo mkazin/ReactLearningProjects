@@ -22,7 +22,7 @@ function App() {
   // console.log(menus)
 
   const enableLogRocket =
-    process.env.NODE_ENV === 'production' && process.env.REACT_APP_LOG_ROCKET_APP_ID;
+    process.env.NODE_ENV === 'production' && process.env.REACT_APP_LOGROCKET_ID;
   const logRocketAppId = process.env.REACT_APP_LOGROCKET_ID
   if (enableLogRocket && logRocketAppId) {
     LogRocket.init(logRocketAppId);
