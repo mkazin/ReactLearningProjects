@@ -50,11 +50,6 @@ jobs:
           KUBECONFIG: ./kubeconfig
 
       -
-        name: Update k8s app policy with SHA as image tag
-        run: |
-          sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
-
-      -
         name: Update k8s app policy with SHA as image tag (to initiate immedate deployment)
         run: |
           sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
@@ -63,21 +58,18 @@ jobs:
         run: |
           echo "REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}"
 
-      -
-        name: Create k8s secret for LOGROCKET AppId
+      - name: Remove any existing logrocket secret
         run: |
-          kubectl create secret generic logrocket-id --from-literal=REACT_APP_LOGROCKET_ID=${{ secrets.REACT_APP_LOGROCKET_ID }}
+          kubectl delete secret logrocket-id --ignore-not-found=true
         env:
           KUBECONFIG: ./kubeconfig
 
       -
-        name: Update k8s app policy with secrets
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          valueFile: k8s.yaml
-          propertyPath: data['REACT_APP_LOGROCKET_ID']
-          value: ${{ secrets.REACT_APP_LOGROCKET_ID }}
-          commitChange: false
+        name: Create k8s secret for LOGROCKET AppId
+        run: |
+          echo -n "${{ secrets.REACT_APP_LOGROCKET_ID }}" | kubectl create secret generic logrocket-id --from-literal=REACT_APP_LOGROCKET_ID=- --namespace=default --dry-run=client -o yaml | kubectl apply -f -
+        env:
+          KUBECONFIG: ./kubeconfig
 
       -
         name: Deploy the new image
