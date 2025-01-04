@@ -58,6 +58,11 @@ jobs:
         name: Update k8s app policy with SHA as image tag (to initiate immedate deployment)
         run: |
           sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
+
+      - name: DEBUG - show logrocket secret
+        run: |
+          echo "REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}"
+
       -
         name: Create k8s secret for LOGROCKET AppId
         run: |
