@@ -19,12 +19,14 @@ import setupLogRocketReact from 'logrocket-react';
 
 // after calling LogRocket.init()
 function App() {
-  // console.log(menus)
+  console.log(process.env)
 
   const enableLogRocket =
     process.env.NODE_ENV === 'production' && process.env.REACT_APP_LOGROCKET_ID;
+  console.log('enableLogRocket', enableLogRocket)
   const logRocketAppId = process.env.REACT_APP_LOGROCKET_ID
   if (enableLogRocket && logRocketAppId) {
+    console.log(`LogRocket.init({logRocketAppId})`)
     LogRocket.init(logRocketAppId);
     setupLogRocketReact(LogRocket);
   }
