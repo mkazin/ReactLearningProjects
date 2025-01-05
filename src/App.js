@@ -24,9 +24,9 @@ const enableLogRocket =
 console.log('enableLogRocket', enableLogRocket)
 const logRocketAppId = process.env.REACT_APP_LOGROCKET_ID
 if (enableLogRocket && logRocketAppId) {
-  console.log(`LogRocket.init({logRocketAppId})`)
   LogRocket.init(logRocketAppId);
   setupLogRocketReact(LogRocket);
+  LogRocket.log(`LogRocket initialized`)
 }
 
 
@@ -38,20 +38,6 @@ function App() {
       { /* DON'T COMMENT OUT THIS HEADER - it's used in the App.test.js */}
       <h1>I learn react</h1>
       { /* DON'T COMMENT OUT THIS HEADER - it's used in the App.test.js */}
-      <table>
-        <thead><tr><th colSpan="2">Environment Variables</th></tr></thead>
-        <tbody>
-          {/* <tr><td>enableLogRocket:</td><td>{enableLogRocket}</td></tr> */}
-          <tr><td>NODE_ENV:</td><td>{process.env.NODE_ENV}</td></tr>
-          <tr><td>REACT_APP_LOGROCKET_ID</td><td>{process.env.REACT_APP_LOGROCKET_ID}</td></tr>
-          {Object.entries(process.env).map(key =>
-            <tr><td>{key[0]}:</td><td>{process.env[key[0]]}</td></tr>
-          )}
-
-          {/* <ul> */}
-          {/* { process.env :</td><td>{process.env}</td></tr> */}
-        </tbody>
-      </table>
 
 
       {/* <TreeView menus={menus} /> */}

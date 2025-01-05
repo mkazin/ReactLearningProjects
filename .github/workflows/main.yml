@@ -22,10 +22,6 @@ jobs:
         run: |
           echo "REACT_APP_LOGROCKET_ID=${{ secrets.REACT_APP_LOGROCKET_ID }}" > .env
 
-      - name: DEBUG - show .env file
-        run: |
-          cat .env
-
       - run: npm run build --if-present
       - run: npm test
       -
@@ -62,23 +58,6 @@ jobs:
         name: Update k8s app policy with SHA as image tag (to initiate immedate deployment)
         run: |
           sed -i "s|mjkazin/react-learning-projects:latest|mjkazin/react-learning-projects:${{ github.sha }}|g" k8s.yaml
-
-      - name: DEBUG - show logrocket secret
-        run: |
-          echo "REACT_APP_LOGROCKET_ID: ${{ secrets.REACT_APP_LOGROCKET_ID }}"
-
-      - name: Remove any existing logrocket secret
-        run: |
-          kubectl delete secret logrocket-id --ignore-not-found=true
-        env:
-          KUBECONFIG: ./kubeconfig
-
-      -
-        name: Create k8s secret for LOGROCKET AppId
-        run: |
-          kubectl create secret generic logrocket-id --from-literal=REACT_APP_LOGROCKET_ID="${{ secrets.REACT_APP_LOGROCKET_ID }}" --namespace=default --dry-run=client -o yaml | kubectl apply -f -
-        env:
-          KUBECONFIG: ./kubeconfig
 
       -
         name: Deploy the new image
