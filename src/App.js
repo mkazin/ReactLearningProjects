@@ -17,19 +17,21 @@ import LogRocket from 'logrocket';
 // * @babel/plugin-transform-react-display-name
 import setupLogRocketReact from 'logrocket-react';
 
+
+
+const enableLogRocket =
+  process.env.NODE_ENV === 'production' && process.env.REACT_APP_LOGROCKET_ID;
+console.log('enableLogRocket', enableLogRocket)
+const logRocketAppId = process.env.REACT_APP_LOGROCKET_ID
+if (enableLogRocket && logRocketAppId) {
+  console.log(`LogRocket.init({logRocketAppId})`)
+  LogRocket.init(logRocketAppId);
+  setupLogRocketReact(LogRocket);
+}
+
+
 // after calling LogRocket.init()
 function App() {
-  console.log(process.env)
-
-  const enableLogRocket =
-    process.env.NODE_ENV === 'production' && process.env.REACT_APP_LOGROCKET_ID;
-  console.log('enableLogRocket', enableLogRocket)
-  const logRocketAppId = process.env.REACT_APP_LOGROCKET_ID
-  if (enableLogRocket && logRocketAppId) {
-    console.log(`LogRocket.init({logRocketAppId})`)
-    LogRocket.init(logRocketAppId);
-    setupLogRocketReact(LogRocket);
-  }
 
   return (
     <div className="App">
@@ -39,8 +41,15 @@ function App() {
       <table>
         <thead><tr><th colSpan="2">Environment Variables</th></tr></thead>
         <tbody>
+          {/* <tr><td>enableLogRocket:</td><td>{enableLogRocket}</td></tr> */}
           <tr><td>NODE_ENV:</td><td>{process.env.NODE_ENV}</td></tr>
           <tr><td>REACT_APP_LOGROCKET_ID</td><td>{process.env.REACT_APP_LOGROCKET_ID}</td></tr>
+          {Object.entries(process.env).map(key =>
+            <tr><td>{key[0]}:</td><td>{process.env[key[0]]}</td></tr>
+          )}
+
+          {/* <ul> */}
+          {/* { process.env :</td><td>{process.env}</td></tr> */}
         </tbody>
       </table>
 
